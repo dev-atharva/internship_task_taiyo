@@ -7,7 +7,7 @@
   border-radius: 2rem;
   padding: 2rem;
   height: 100%;
-  z-index: -1;
+  z-index: 1;
 }
 
 body {

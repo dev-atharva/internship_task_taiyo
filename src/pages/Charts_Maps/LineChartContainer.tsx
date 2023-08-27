@@ -12,7 +12,6 @@ const LineChartContainer = () => {
   if (error) {
     return <h1>Error</h1>;
   }
-  console.log(data);
   return (
     <div className="flex items-center justify-center p-4 pl-12 ">
       {isLoading || data === undefined || data === null ? (

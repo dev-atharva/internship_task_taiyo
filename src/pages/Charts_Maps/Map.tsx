@@ -3,11 +3,14 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
 import { useQuery } from "@tanstack/react-query";
 import getcountrydata from "../../providers/Map_data_provider";
-import Popupcard from "./Popup";
+import Popupcard from "./Popupcard";
+
 
 const customIcon = new Icon({
   iconUrl: require("../../assets/map_marker.png"),
   iconSize: [38, 38],
+  iconAnchor: [10, 41],
+  popupAnchor: [2, -40],
 });
 
 const Map = () => {
@@ -15,9 +18,11 @@ const Map = () => {
     queryKey: ["map_data"],
     queryFn: getcountrydata,
   });
+
   if (error) {
     return <h1>Error</h1>;
   }
+
   return (
     <>
       {isLoading || data === undefined || data === null ? (
@@ -30,6 +35,7 @@ const Map = () => {
           />
           {data.map((country) => (
             <Marker
+              key={country.country}
               icon={customIcon}
               position={[country.countryInfo.lat, country.countryInfo.long]}
             >
@@ -38,8 +44,8 @@ const Map = () => {
                   image_url={country.countryInfo.flag}
                   country_name={country.country}
                   deaths={country.deaths}
-                  recovered={country.recovered}
                   cases={country.cases}
+                  recovered={country.recovered}
                 />
               </Popup>
             </Marker>
