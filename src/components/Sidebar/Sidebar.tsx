@@ -24,7 +24,7 @@ const Sidebar = () => {
     <div
       className={`fixed left-0 top-0 min-h-[100vh] ${
         expanded ? "max-w-[40vw]" : "w-[60px]"
-      } flex flex-col justify-start p-4 gap-2 shadow-lg rounded-r-lg transition-all duration-300`}
+      } flex flex-col justify-start p-4 gap-2 shadow-lg rounded-r-lg bg-white z-30 transition-all duration-300`}
     >
       <button onClick={toggleSidebarWidth}>
         {expanded ? (
